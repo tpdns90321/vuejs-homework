@@ -1,5 +1,5 @@
-let studentCount = 31;
+let studentCount = 30;
 let pageSize = 5;
 
-let pageNum = Math.floor(studentCount / pageSize) + (studentCount % pageSize !== 0 ? 1 : 0);
+let pageNum = Math.ceil(studentCount / pageSize);
 console.log(pageNum);
