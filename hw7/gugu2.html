@@ -1,0 +1,41 @@
+<html>
+<head>
+  <meta charset="utf-8" />
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <style>
+    div#app { padding: 50px; margin: 30px auto; max-width: 600px; 
+      border: 1px solid #ccc; box-shadow: 3px 3px 3px #aaa; font-size: 11pt; }
+    table, tr, td {
+      border-collapse: collapse;
+      padding: 4px;
+      text-align: center;
+    }
+    table {
+        border: 1px solid;
+    }
+    td {
+        border: 1px solid;
+        border-style: none solid none solid;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <table>
+      <tr v-for="num in 9">
+        <td v-for="dan in 8">
+          {{dan + 1}} * {{num}} = {{(dan + 1) * num}}
+        </td>
+      </tr>
+    </table>
+  </div>
+  <script type="text/javascript">
+    var app = new Vue({
+      el: '#app',
+      data: {
+      }
+    })    
+   </script>
+</body>    
+</html>
+
