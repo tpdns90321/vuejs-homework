@@ -1,0 +1,58 @@
+<html>
+<head>
+  <meta charset="utf-8" />
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <style>
+    div#app { padding: 50px; margin: 30px auto; max-width: 600px; 
+      border: 1px solid #ccc; box-shadow: 3px 3px 3px #aaa; font-size: 11pt; }
+    table, tr, td {
+      display: inline-block;
+      border-collapse: collapse;
+      text-align: center;
+    }
+    td {
+      font-size: 20pt;
+      border: 1px solid;
+      height: 100px;
+      width: 100px;
+    }
+    td.yellow {
+      background-color: #ffa;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <table>
+      <tr v-for="(row, x) in matrix">
+        <td v-for="(toggle, y) in row" v-on:click="onClick(x, y)" v-bind:class="{ yellow: toggle }">
+          {{ (x * 3) + (y + 1) }}
+        </td>
+      </tr>
+    </table>
+  </div>
+  <script type="text/javascript">
+    var app = new Vue({
+      el: '#app',
+      data: {
+        matrix: []
+      },
+      created: function() {
+        for (let x = 0; x < 3; x++) {
+          this.matrix[x] = [];
+          for (let y = 0; y < 3; y++) {
+            this.matrix[x][y] = false;
+          }
+        }
+      },
+      methods: {
+        onClick: function(x, y) {
+          let tmp = this.matrix[x].splice(0);
+          tmp[y] = !this.matrix[x][y];
+          Vue.set(this.matrix, x, tmp);
+        }
+      },
+    })
+   </script>
+</body>    
+</html>
